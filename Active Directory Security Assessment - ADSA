@@ -1,6 +1,6 @@
  Active Directory Security Assessment - ADSA
 
-  Active Directory Security Assessment - ADSA
+Active Directory Security Assessment - ADSA
 Author
 Huy Kha
 Contact
@@ -9,16 +9,19 @@ Huy_Kha@outlook.com
 Active Directory is the backbone of identities for many organizations around the world, but it is often not managed well, which open the doors for attackers to compromise it in a minute or two.
 It is very expensive to recover an AD, so security needs to be enforced. ADSA contains different technical security controls and procedures to protect AD on a better state. The goal of ADSA is to help your team working together to improve the security posture of AD without pitching a third-party vendor or trying to sell you a security product.
 Enjoy!
+
  Foreword
 Microsoft provides Active Directory Security Assessments for their customers, which is great, but unfortunately not everyone has the money nor the people to do these kind of Security Assess-ment, and since AD is the backbone of identities for many organizations. It is crucial to protect it, right?
 Despite that, I wanted to purely focus on something else than AD. I started to release something similar as ADSA, but a bit of my own version, which does not mean, that you would immediately be 100% secure if you follow all of these recommendations. The goal of ADSA is to improve the security posture of AD and slow down an attacker, while trying to ensure that the recommenda-tions will not break any stuff in production.
 Different examples from real world experience has been covered, where I have managed to see these misconfigurations in production environments.
+
  Introduction
  Backups
 1.1) Domain Controllers
 1.2) DHCP
 1.3) DNS
 1.4) PKI
+
  Domain Controllers
 2.1) Hardening settings
 2.2) Disabling unnecessary services
@@ -27,6 +30,7 @@ Different examples from real world experience has been covered, where I have man
 2.5) Procedure for rotating the password of the KRBTGT account
 2.6) Procedure for managing the password of the DSRM account
 2.7) Improve auditing rules
+
  Access Control List
 3.1) Running periodically ACL scans
 3.2) Control ACLs that has been set on the OU of the Domain Controllers
@@ -37,6 +41,7 @@ Different examples from real world experience has been covered, where I have man
 3.7) Control ACLs that has been set on GPO's that are linked to the DC
 3.8) Control ACLs that has been set on the Domain Object
 3.9) Run BloodHound to find more escalation paths
+
  Best practices
 4.1) Enabling Active Directory Recycle Bin
 4.2) Delegating rights to restore (deleted) objects out of Recycle Bin
@@ -45,33 +50,41 @@ Different examples from real world experience has been covered, where I have man
 4.5) Remove sIDHistory after migration
 4.6) Tier 0 admins need to be a member of the Protected Users, group
 4.7) Tier 0 admins need to have the ''Account is sensitive and cannot be delegated'' checkmark.
+
  DNS
 5.1) Backup and restore plan for DNS
 5.2) DnsAdmins
+
  DHCP
 6.1) Backup and restore plan for DHCP
+
  PKI
 7.1) Backup and restore plan for PKI
 7.2) Enable auditing rules
 7.3) Monitor relevant PKI event logs
 7.4) Hardening settings for PKI
+
  Password Policies
 8.1) Fine-Grained Password Policies for service accounts
 8.2) Fine-Grained Password Policies for IT Admins
 8.3) Upgrade Default Password Policy in AD
+
  Weak or insecure configurations
 9.1) Accounts with SPN's in high-privileged group
 9.2) Pre-authentication disabled on accounts
 9.3) Servers with Unconstrained Kerberos Delegation
+
  Security Check
 10.1) Ensure AdminSDHolder is in clean state
 10.2) Create honey user to detect Kerberoast
 10.3) Monitor high-privileged groups
 10.4) Event Logs to monitor
+
  MSFT Administrative Tier Model
 11.1) Deploy a Microsoft Administrative Tier Model or a similar model
 11.2) Define which assets needs to be managed from a Tier 0
 11.3) Best practices for managing GPO's in a Tier model.
+
  1.1 – Backups of Domain Controllers
 Task
 Tier 0 admins
@@ -79,10 +92,12 @@ Permission Required
 Domain Admins or equivalent.
 Least-Privilege
 Backup Operators
+
  Summary
 Making back-ups of Domain Controllers is a crucial part of every organization, because Domain Controllers are responsible for handling authentication in a network. A DC authenticates users, it stores all the credentials of users in a DIT file, and it enforces a security policy for a Windows domain. A DC is like the keys to the kingdom of an organization, and it needs to be secure on a high level. Since Domain Controllers are so crucial. It is critical to make back-ups and store them securely.
 There are different solutions in the market to make back-ups of Domain Controllers, but since the purpose of ADSA is not to pitch a vendor. We will use standard features that are available in Active Directory, which is in this case. Windows Server Backup.
  Log on the DC and make sure Windows Server Backup is installed.
+
  Run PowerShell with elevated rights
 Import-Module ServerManager
 Install-WindowsFeature Windows-Server-Backup
@@ -90,6 +105,7 @@ Install-WindowsFeature Windows-Server-Backup
 Get-WindowsFeature | where {$_.Name -eq "Windows-Server-Backup"}
  Use Windows Server Backup to create back-ups
  There are two sort of backups: ''Backup Schedule'' and ''Backup Once''
+
  In this example, ''Backup Schedule'' will be the example.
 1. Open Windows Server Backup
 2. Click on Backup Schedule
@@ -104,6 +120,7 @@ Get-WindowsFeature | where {$_.Name -eq "Windows-Server-Backup"}
 11. Select the disk to store the back-ups
 12. Click next
 13. Click Finish
+
 Scheduled Task with the name ''Microsft-Windows-WindowsBackup'' will be created.
 After the back-up schedule has been completed. It will be displayed in the GUI of the Windows Server Backup.
 All the event logs regarding back-ups can be found at Microsoft-Windows-Backup\Operational, and event 14 tells that a backup has been completed.

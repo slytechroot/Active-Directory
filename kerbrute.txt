@@ -1,0 +1,30 @@
+nmap -p 3389,445 -v -iL "C:\\Users\\user\\Desktop\\123.txt" -script rdpntlm-info,smb-enum-users,smb-os-discovery
+
+In the output, if we're lucky, we'll get a list of accounts
+straightaway. If it doesn't roll:
+We write out this line DNS_Domain_Name for ourselves:
+There can be any value
+Further in the attached archive I will give you a softina
+Kerbrute.exe
+
+
+Let's use it like this:
+C:\kerbrute.exe userenum C:\userlist.txt --dc 10.20.10.6 -d rushenterprises.com
+
+Poke enter and wait until all the supposed ones have moved
+domain accounts.
+After these manipulations, we copy everything that the kerbrute found to itself
+into a separate textbook and clean everything, leaving only logins without
+home @domain
+Go to kali linux
+Opening the console
+We write there sudo legion
+
+We put everything as I have previously indicated the file with logins,
+who found kerbrut and ip DC.
+Default passwords make your list of the 200 most frequent
+passwords.
+Now it remains to wait for the results, which in the log looks like
+something like this:
+LDAP: engineering.calendar:password
+

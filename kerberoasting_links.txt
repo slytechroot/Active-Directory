@@ -1,0 +1,4 @@
+Kerberoasting
+https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/t1208-kerberoasting
+https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse
+http://www.labofapenetrationtester.com/2017/03/using-sql-server-for-attacking-forest-trust.html

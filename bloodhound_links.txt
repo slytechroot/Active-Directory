@@ -1,0 +1,6 @@
+BloodHound
+https://wald0.com/?p=112
+https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-with-bloodhound-on-kali-linux
+https://github.com/knavesec/Max
+https://github.com/Coalfire-Research/Vampire
+https://whynotsecurity.com/blog/ldd2bh/

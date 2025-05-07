@@ -1,12 +1,29 @@
 Video series
+How to Setup a Virtual Windows Active Directory Domain
 https://www.youtube.com/watch?v=Bm3mihQNGI4&list=PLDrNMcTNhhYqZj7WZt2GfNhBDqBnhW6AT&index=5
+
+How to Setup a Virtual Windows Active Directory Domain
 https://www.youtube.com/watch?v=Bm3mihQNGI4&list=PLDrNMcTNhhYqZj7WZt2GfNhBDqBnhW6AT&index=4
+
+SIEGECAST: Kerberoasting & Attacks 101
 https://www.youtube.com/watch?v=Jaa2LmZaNeU
+
+Demystifying Modern Windows Rootkits
 https://www.youtube.com/watch?v=ZASsIpdumcY
+
+Active Directory Enumeration With PowerView
 https://www.youtube.com/watch?v=n3Ow_LKanMo
+
+Attacking Active Directory - Kerberoasting
 https://www.youtube.com/watch?v=-3MxoxdzFNI
+
+Kerberos Golden Ticket Attack Explained
 https://www.youtube.com/watch?v=o98_eRt777Y
+
+Attacking Active Directory - Bloodhound
 https://www.youtube.com/watch?v=aJqjH3MsbLM
+
+Windows Post Exploitation - Dumping Hashes With Mimikatz
 https://www.youtube.com/watch?v=AZirvtZNIEw
 
 Exploiting Active Directory

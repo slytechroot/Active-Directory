@@ -8,11 +8,27 @@ https://www.youtube.com/watch?v=-3MxoxdzFNI
 https://www.youtube.com/watch?v=o98_eRt777Y
 https://www.youtube.com/watch?v=aJqjH3MsbLM
 https://www.youtube.com/watch?v=AZirvtZNIEw
+
+Exploiting Active Directory
 https://www.youtube.com/watch?v=0usWGCJKnzI
+
+Active Directory OSCP Preparation Course 2022 
 https://www.youtube.com/watch?v=nJlB5XDh4mk
+
+OffSec Live | Walkthrough of a PEN-200 AD Set 
 https://www.youtube.com/watch?v=2NLi4wzAvTw
+
+Hacking Windows Domain Active Directory Series - Episode 04 
 https://www.youtube.com/watch?v=eotEvAZw5Lc
+
+ Hacking Windows Domain Active Directory Series - Episode 03 
 https://www.youtube.com/watch?v=Em4KaC2M7Io
+
+Hacking Windows Domain Active Directory Series - Episode 02
 https://www.youtube.com/watch?v=61lriESHdPw
+
+Hacking Windows Domain Active Directory Series - Episode 02
 https://www.youtube.com/watch?v=61lriESHdPw&t=23s
+
+Kerberos & Attacks 101
 https://www.youtube.com/watch?v=IBeUz7zMN24

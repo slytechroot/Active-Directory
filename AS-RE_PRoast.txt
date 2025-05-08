@@ -1,0 +1,9 @@
+AS-REP Roasting is an attack against Kerberos for user accounts that do notrequire preauthentication. 
+Pre-authenticationis the first step in Kerberos authentication,and is designed to prevent brute-forcepassword guessing attacks.
+
+Tools
+1.Rebeus.exe asreproast
+2.John
+
+Solution:
+The obvious protections fromthis type of attack are to find and remove any instances of user accounts that are set to not require Kerberos preauthentication.

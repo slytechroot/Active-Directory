@@ -1,0 +1,10 @@
+Pass-the-Ticket attacks take aim at Kerberos much in the same way as Golden Ticket and Silver Ticket attacks, both of which exploit unfixable weaknesses in the authentication protocol.
+
+Tools
+1.
+.\Rubeus.exe asktgt /user:<USET>$ /rc4:<NTLM HASH> /ptt2.klist
+
+Solutions:
+Upon detecting a Pass-the-Ticket attack, your response depends on the level of access the attack provided. If the compromised account from which the TGT or service 
+ticket was stolen was a low privilege account with limited or no permissions outside of the compromised system, mitigation could be as simple as resetting the user’s Active Directory password.
+That would invalidate the stolen TGT orservice tickets and prevent the attacker from generating new tickets using the stolen password hash.

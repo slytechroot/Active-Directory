@@ -1,0 +1,12 @@
+If we have ExtendedRight on User-Force-Change-Password object type, we can reset the user’s password without knowing their current password.
+
+Tools
+1.
+. .\PowerView.ps1
+2.
+Set-DomainUserPassword -Identity User -Verbose
+
+Solutions
+It is recommended to do regular audits to check the delegations and group permissions in nested groups.
+
+

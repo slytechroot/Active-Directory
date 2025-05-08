@@ -1,0 +1,28 @@
+• ADRecon
+.\ADRecon.ps1 -DomainController MYAD.net -Credential MYAD\myuser
+
+• Active Directory Assessment and Privilege Escalation Script
+powershell.exe -ExecutionPolicy Bypass ./ADAPE.ps1
+
+• Ping Castle
+pingcastle.exe --healthcheck --server <DOMAIN_CONTROLLER_IP> --user <USERNAME> --password <PASSWORD> --advanced-live --nullsession
+pingcastle.exe --healthcheck --server domain.local
+pingcastle.exe --graph --server domain.local
+
+pingcastle.exe --scanner scanner_name --server domain.local
+(available scanners are:aclcheck,antivirus,corruptADDatabase,foreignusers,laps_bitlocker,local admin,ullsession,nullsession-trust,share,smb,spooler,startup)
+
+• Kerbrute
+./kerbrute passwordspray -d <DOMAIN> <USERS.TXT> <PASSWORD>
+
+• Rubeus
+Rubeus.exe asktgt /user:USER </password:PASSWORD [/enctype:DES|RC4|AES128|AES256] | /des:HASH | /rc4:HASH | /aes128:HASH | /aes256:HASH> [/domain:DOMAIN] [/dc:DOMAIN_CONTROLLER] [/ptt] [/luid]
+Rubeus.exe dump [/service:SERVICE] [/luid:LOGINID]
+Rubeus.exe klist [/luid:LOGINID]
+Rubeus.exe kerberoast [/spn:"blah/blah"] [/user:USER] [/domain:DOMAIN] [/dc:DOMAIN_CONTROLLER] [/ou:"OU=,..."]
+
+• AutomatedLab
+New-LabDefinition -Name GettingStarted -DefaultVirtualizationEngine HyperV
+Add-LabMachineDefinition -Name FirstServer -OperatingSystem 'Windows Server 2016 SERVERSTANDARD'
+Install-Lab
+Show-LabDeploymentSummary

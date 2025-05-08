@@ -1,0 +1,13 @@
+LLMNR Poisoning
+
+LLMNR Poisoning or Link-Local MulticastName Resolution Poisoning is a verycommonly used attack when it comes torunning a penetration test against a localnetwork. 
+LLMNR and NBT-NS (NetBIOSName Service) attacks go hand-in-hand asthey can be performed by the same tool. 
+TheLink-Local Multicast Name Resolutionprotocol itself is based on DNS and allowshosts to resolve other hostnames on the samelocal link.
+
+Tools:
+1.
+nmap -Pn -n -p 139,445 --scriptsmb-enum-shares.nse 10.10.10.102.responder 3.smbclient//10.10.10.10/share
+
+Solution
+LLMNR can be turned-o through the group policy editor, underthe “policy setting” menu underLocal Computer Policy ->Computer Configuration ->Administrative Templates ->Network -> DNS Client.
+

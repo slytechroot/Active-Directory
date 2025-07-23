@@ -1,0 +1,39 @@
+Environment details :-
+Single or Multi Domain environment.
+Active Directory environment either On-premises, Hybrid or EntraID
+Active Directory Architecture details including DC's, AD sites & Site replication interval 
+Share the AD Replication status and summary using the below commands :-
+repadmin /replsum * /bysrc /bydest /sort:delta
+repadmin /showrepl * /csv
+Maximum concurrent sessions permitted
+Number of devices allowed per user.
+Password Policy configuration settings
+Account Lockout Policy configuration settings
+
+
+User Specific details :-
+Are the affected users belongs to any specific group/site.
+Latest event logs (Event 4740 & 4771) for a couple of locked out user accounts using search from all DC's
+Output of the below command for a locked user from one of his local site DC and any other site DC, before unlocking the user account
+repadmin /showobjmeta "DC FQDN" "ObjectDN" > "C:\Temp\UserMetadata1234.txt"
+
+
+Script to get the source details of locked out accounts:-
+$file = "C:\Temp\AccountLockoutReport\lockoutreport.csv"
+ 
+$lastWrite = (get-item $file).LastWriteTime
+$timespan = new-timespan -hours 24
+ 
+if (((get-date) - $lastWrite) -gt $timespan) {
+$newfile = "C:\Temp\AccountLockoutReport\lockoutreport $(get-date -f MMddyyyyhhmm).csv"
+rename-item "C:\Temp\AccountLockoutReport\lockoutreport.csv" $newfile
+}
+ 
+$properties = @(
+    @{n='User';e={$_.Properties[0].Value}},
+    @{n='Locked by';e={$_.Properties[1].Value}},
+    @{n='TimeStamp';e={$_.TimeCreated}}
+    @{n='ComputerName';e={$_.Properties[4].Value}}
+)
+Get-WinEvent -FilterHashTable @{LogName='Security'; ID=4740} | Select-Object $properties
+Get-WinEvent -FilterHashTable @{LogName='Security'; ID=4740} | Select-Object $properties | Export-csv "$file" -append -NoTypeInformation -Encoding UTF8

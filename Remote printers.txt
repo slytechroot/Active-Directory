@@ -1,0 +1,5 @@
+Remote printers
+
+Put a little script together and drop it in the login script so you know which printers are being deleted. This will delete a network printer (only) for all users on the workstation. So if you want to phase out a network printer \\server\printer1 do this
+
+rundll32 printui.dll PrintUIEntry /ga /n\\server\printer1

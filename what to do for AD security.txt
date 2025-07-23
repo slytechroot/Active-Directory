@@ -1,0 +1,97 @@
+
+
+    Attack path management: bloodhound, M$ whatever it’s called this week
+
+    Disable legacy mDNS: LLMNR, netBIOS
+
+    Tiered accounts: separate accounts for DA, server admin, etc.
+
+    Local admin password management: LAPS (Local Admin Password Solution), insert PW management solution
+
+    Network: microsegmentation, RITA, Zeek, AC-Hunter
+
+################
+
+
+
+Minimize the number of accounts with administrative privileges. Use separate accounts for administrative tasks and regular user activities. Fireman style accounts and privilege management tools help with this.
+
+Run tools like bloodhound/sharphound once in a while to understand privilege creep and the deadly web of permissions
+
+Enforce MFA for all users, especially those with elevated privileges
+
+Ensure all systems, including domain controllers, are up-to-date with the latest security patches
+
+Administer AD from dedicated, highly secure workstations, segmentation, pa0 whatever you want to call it
+
+Continuously monitor and audit AD logs for suspicious activities
+
+Implement and enforce strong password policies, including the use of passphrases, optimally tie back to MFA and go passwordless if possible.
+
+Regularly review and disable inactive user and computer accounts
+
+Implement Least Privilege Principle, Ensure users have the minimum level of access necessary to perform their job functions
+
+Use strong, unique passwords for service accounts and avoid using them for interactive logins. Preferably deny the ability to use interactive logins at all on service accounts, use something like LAPS or.. what’s it called.. group managed service accounts?
+
+robust backup and recovery strategy for AD
+
+
+###############
+
+
+
+    Cyber incident recovery plan with “domain Take back” process ready
+
+    Hardened DC dedicated to the task of AD + DNS only
+
+    SIEM and Soc
+
+    CS falcon or defender
+
+    Authentor push notification with biometric protection (MFA) at every logon
+
+    PAM and PIM
+
+    Domain admins exclusive access to locked to only ever login via dedicated bastion jump boxes, unless console access is required.
+
+    Domain admins never have email linked to their account
+
+    Domain admins can not access the internet.
+
+    Root shares on DC’s removed eg c$
+
+    All DC’s fully patched to the same level and running some forest functional level 12 attesting of all domain admins / service account every month 13 no standing schema or enterprise admins 14 locked down KDC. 15 no legacy trusts 16 no everyone access 17 alert to all domain admin role holders when domain admin is used to login. 18 detailed change log 19 testing of all changes including back out plans 20 regular red team attacks 21 regular vulnerability scanning 22 periodic risk assessment on whole domain service 23 ITIL CMDB with CI to cover OUs and GPOs for full change control 24 network segmentation 25 complete split user AD from IOT/scada/manufacturing domains. 26 tested isolated process for DR and BC 27 backup communication for the team eg what’s up / telegram / telephone incase all domain communication is lost. 28 long complicated password for all admins, 29 no (password non expiry) except of one break glass account 30 logon as a service does not have permitted interactive logon. 31 domain admin service accounts not if you can help it. 32 process to roll the {certs, keys, secrets, passwords } if a team member leaves 33 support contract with Microsoft with a TAM. 34 qualified experienced staff 35 executive air cover so when you say no it’s risky it means no. 36 complete comparative test domain 37 common hardware all patched including firmware or common VMs build on all DCs. 38 comprehensive up to date documentation 39 network diagrams 40 road map of the service 41 application monitoring 42 performance monitoring 43 anomaly detection 44 tested fsmo transfer (and return) 45 periodic vetting / background checks on all staff with domain admins, and always at appointment. 46 honeypots established 47 run book - for central awareness of what’s going on.
+
+
+
+#########
+
+
+
+    LAPS 2.0 and GPO hardening.
+
+    RODC for branches with no desktop experience.
+
+    Enough resources to have a qualified engineer go through the Baseline Security Analyzer and the AzureAD security scores and dedicating time to work towards compliance of those base lines.
+
+    LDAP access to AD must use TLS encryption (and enforced).
+
+    Disabling all the out of the box NT 4.0 support which is often seen as a security compromise.
+
+    Regular patch cycles
+
+    Microsoft Defender for Identity has on-prem AD sensor for further insights.
+
+    Ensure the AD recovery password is documented for AD server in a secure location.
+
+    Separated admin account for Domains Admins from their normal user accounts.
+
+    Start to consider your organization pathway into Passwordless authentication.
+
+    If Hybrid, on the cloud side ensure MFA is mandatory and enforced.
+
+
+
+################
+

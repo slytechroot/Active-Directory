@@ -1,0 +1,107 @@
+
+Remotely Install VNC - Hak5
+
+      This article (or section) may need to be wikified.
+      Please help improve this article, especially its introduction, section
+      layout, and relevant internal links.
+      This article has been tagged since February 2007.
+      Contents
+       [hide]
+        1 Just commands without any explanation:
+        2 Step 1: Install VNC locally and set the password.
+        3 Step 2: Configure VNC on the remote PC using PsExec
+        4 Fast Push
+
+Just commands without any explanation:
+Install VNC locally - register server as system service, start VNC system service, set password.
+
+NET USE \\RemotePC\IPC$ /user:administrator password
+
+xcopy "C:\Program Files\UltraVNC\*.*" "\\RemotePC\C$\Program Files\UltraVNC\*.*" /r/i/c/h/k/e
+
+regedit /e "\\RemotePC\C$\vncdmp.txt" "HKEY_LOCAL_MACHINE\Software\ORL"
+
+psexec \\RemotePC -s -i -d %windir%\regedit /s C:\vncdmp.txt
+
+psexec \\RemotePC -s -i -d "C:\Program Files\UltraVNC\winvnc.exe" -install
+
+psexec \\RemotePC -s -i -d net start "VNC Server"
+
+del \\RemotePC\C$\vncdmp.txt
+
+test connection to computer.This was tested with UltraVNC. 1.0.2 Following are the same steps with
+explanations.
+Step 1: Install VNC locally and set the password.
+During the installation process, make sure that you check both:
+- Register VNC Server as a system service
+- Start the VNC system service
+
+At the end of the installation process, you will be prompted to set a password.
+The password that you set here will later be used to connect the remote PC. If
+for some reason you aren't prompted for the password, run the following from the
+command line:
+"C:\Program Files\UltraVNC\winvnc.exe" -defaultsettingsAlso run net start from the command line and confirm VNC Server is running as a
+service.
+Step 2: Configure VNC on the remote PC using PsExec
+PsExec is a freeware tool to execute processes on a remote PC and is needed for
+this procedure:
+http://www.microsoft.com/technet/sysinternals/utilities/psexec.mspx
+The remote account that you use must be a member of the Administrators group on
+the remote PC. "\\RemotePC" mentioned below can be either the remote PC's name
+or IP address. Login to the remote PC's IPC$ share with an administrator
+account. If you don't include the password in plain text, you will be prompted
+to supply the password (which will not be displayed as plain text).
+NET USE \\RemotePC\IPC$ /user:administrator passwordCopy your local VNC files to the remote PC.
+xcopy "C:\Program Files\UltraVNC\*.*" "\\RemotePC\C$\Program Files\UltraVNC\*.*" /r/i/c/h/k/eUse Regedit to export the local VNC registry settings to the remote PC. Note: If
+you prefer you can export the file locally and then copy it.
+regedit /e "\\RemotePC\C$\vncdmp.txt" "HKEY_LOCAL_MACHINE\Software\ORL"Use PsExec to import the above registry file on the remote PC.
+psexec \\RemotePC -s -i -d %windir%\regedit /s C:\vncdmp.txtMake sure to use the /s switch with regedit so that confirmation isn't required
+on the remote PC. You are using regedit on the remote PC to perform this
+command. If the path for regedit is different on the remote PC, use the exact
+path instead of %windir% Example: If the local PC is running XP Pro and the
+remote PC is Windows 2000, use this command:
+psexec \\RemotePC -s -i -d C:\Winnt\regedit /s C:\vncdmp.txtUse PsExec to install the remote winvnc service.
+psexec \\RemotePC -s -i -d "C:\Program Files\UltraVNC\winvnc.exe" -installUse PsExec to start the remote "VNC Server" service.
+psexec \\RemotePC -s -i -d net start "VNC Server"Remove registry dump file.
+del \\RemotePC\C$\vncdmp.txtYou should now be able to use VNC to control the remote PC.
+
+
+
+--gointern 07:34, 7 Aug 2006 (PDT)
+Fast Push
+A simpler, command line application is fastpush].
+One command line is needed, and works like an automated script of the above
+Can install various versions of VNC
+Retrieved from "http://wiki.hak5.org/wiki/Remotely_Install_VNC"
+Categories: All pages needing to be wikified | Wikify from February 2007 |
+Tutorials
+
+
+
+Navigation
+  Home
+  About
+  Forums
+  Sketches
+  Episodes
+Views
+  Article
+  Discussion
+  View source
+  History
+Personal tools
+  Log in / create account
+  Main Page
+  Community portal
+  Current events
+  Recent changes
+  Random page
+  Help
+  Donations
+Search
+   Toolbox
+  What links here
+  Related changes
+  Upload file
+  Special pages
+  Printable version 

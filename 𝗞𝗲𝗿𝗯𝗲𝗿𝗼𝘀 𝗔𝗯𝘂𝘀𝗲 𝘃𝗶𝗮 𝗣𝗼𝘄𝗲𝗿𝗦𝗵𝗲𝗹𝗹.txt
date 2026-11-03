@@ -1,0 +1,9 @@
+�𝗲𝗿𝗯𝗲𝗿𝗼𝘀 𝗔𝗯𝘂𝘀𝗲 𝘃𝗶𝗮 𝗣𝗼𝘄𝗲𝗿𝗦𝗵𝗲𝗹𝗹
+
+This guide covers what actually works in the field:
+- Ticket Dumping from LSA cache (standard user + SYSTEM)
+- Pass-the-Ticket injection — no password needed
+- Kerberoasting — offline hash cracking from Service Tickets
+- AS-REP Roasting — targeting pre-auth disabled accounts
+- Golden Ticket — full domain persistence via krbtgt
+- Silver Ticket — stealthy service-level access
